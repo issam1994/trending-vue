@@ -14,7 +14,7 @@ import {
 import RepoRow from '@/components/RepoRow'
 //
 export default {
-  name: 'trendingRepos',
+  name: 'RepoList',
   components: {
     RepoRow
   },
