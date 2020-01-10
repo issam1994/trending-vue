@@ -63,7 +63,7 @@ export default {
       return this.repo.open_issues_count;
     },
     timeInterval() {
-      return this.repo.pushed_at;
+      return this.repo.created_at;
     },
     repoOwner() {
       return this.repo.owner.login;
@@ -71,12 +71,12 @@ export default {
   },
   filters: {
     //
-    convertAndDisplayTimePassedWithAppropriateUnit(pushed_at) {
-      if (hasADayOrMorePassedSincePushed(pushed_at))
-        return timePassedSincePushedInDays(pushed_at) + " day(s) ago";
-      else if (hasAnHourOrMorePassedSincePushed(pushed_at))
-        return timePassedSincePushedInHours(pushed_at) + " hour(s) ago";
-      else return timePassedSincePushedInMinutes(pushed_at) + " minute(s) ago";
+    convertAndDisplayTimePassedWithAppropriateUnit(created_at) {
+      if (hasADayOrMorePassedSincePushed(created_at))
+        return timePassedSincePushedInDays(created_at) + " day(s) ago";
+      else if (hasAnHourOrMorePassedSincePushed(created_at))
+        return timePassedSincePushedInHours(created_at) + " hour(s) ago";
+      else return timePassedSincePushedInMinutes(created_at) + " minute(s) ago";
     },
     //
     displayStarsAndIssuesAppropriatly(starsOrIsssues) {
