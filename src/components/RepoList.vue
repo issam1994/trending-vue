@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto my-8">
-    <MySpinner class="mx-auto my-2" />
     <RepoRow v-for="r in repos" :key="r.id" :repo="r" />
+    <MySpinner v-if="isLoading" class="mx-auto my-2" />
   </div>
 </template>
 
@@ -31,12 +31,16 @@ export default {
   data() {
     return {
       repos: [],
-      isLoadingFirstPage: true,
+      isLoading: true,
       currentPage: 0
     }
   },
   // methods
   methods: {
+    //spinner control
+    toggleSpinner(){
+      this.isLoading = !this.isLoading;
+    },
     // data controls
     getDataFromApi() {
       console.log('getting repos..')
@@ -50,7 +54,8 @@ export default {
     // ..
     loadNextPage() {
       if (hasScrolledToTheEndOfList()) {
-        this.stopListeningToScrolling()
+        this.stopListeningToScrolling();
+        this.toggleSpinner();
         this.getDataFromApi()
       }
     },
@@ -66,7 +71,7 @@ export default {
       console.log('updating repos..')
       let { repos, currentPage } = this
       this.repos = [...repos, ...fetchedRepos]
-      this.isLoadingFirstPage = false
+      this.toggleSpinner();
       this.currentPage = currentPage + 1
     },
     //scroll controls
