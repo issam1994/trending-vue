@@ -1,5 +1,6 @@
 <template>
   <div class="container mx-auto my-8">
+    <MySpinner class="mx-auto my-2" />
     <RepoRow v-for="r in repos" :key="r.id" :repo="r" />
   </div>
 </template>
@@ -12,11 +13,13 @@ import {
 } from '@/components/utils.js'
 //importing the repo component
 import RepoRow from '@/components/RepoRow'
+import MySpinner from '@/components/MySpinner'
 //
 export default {
   name: 'RepoList',
   components: {
-    RepoRow
+    RepoRow,
+    MySpinner
   },
   // lifesycle methods
   mounted() {
