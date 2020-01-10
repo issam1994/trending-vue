@@ -1,5 +1,5 @@
 # trending-vue
-
+An app that lists trending github repositories that were created in the last 30 days.
 ## Project setup
 ```
 yarn install
