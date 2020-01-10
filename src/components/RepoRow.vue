@@ -10,14 +10,14 @@
           <MySvg :path="starIcon" />
           <div class="">
           Stars:
-          <span class="font-normal">{{repoStars | displayStarsAndIssuesAppropriatly}}</span>
+          <span class="font-normal">{{repoStars | displayStarsAndIssuesAppropriately}}</span>
           </div>
         </div>
         <div class="flex-none flex items-center shadow-sm rounded-lg bg-gray-200 font-semibold px-2 py-1 mr-2">
           <MySvg :path="issueIcon" />
           <div class="">
             Issues:
-          <span class="font-normal">{{repoIssues | displayStarsAndIssuesAppropriatly}}</span>
+          <span class="font-normal">{{repoIssues | displayStarsAndIssuesAppropriately}}</span>
           </div>
         </div>
         <div class="text-gray-500">
@@ -98,7 +98,7 @@ export default {
       else return timePassedSincePushedInMinutes(created_at) + " minute(s) ago";
     },
     //
-    displayStarsAndIssuesAppropriatly(starsOrIsssues) {
+    displayStarsAndIssuesAppropriately(starsOrIsssues) {
       if (starsOrIsssues > 1000) {
         return (starsOrIsssues / 1000).toFixed(1) + "k";
       } else {
