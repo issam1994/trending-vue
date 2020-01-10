@@ -6,13 +6,19 @@
       <div class="text-3xl font-bold tracking-wide">{{repoName}}</div>
       <div class="font-medium pb-2">{{repoDescription}}</div>
       <div class="flex items-center">
-        <div class="flex-none shadow-sm bg-gray-100 font-semibold px-2 py-1 mr-2">
+        <div class="flex-none flex items-center shadow-sm rounded-lg bg-gray-200 font-semibold px-2 py-1 mr-2">
+          <MySvg :path="starIcon" />
+          <div class="">
           Stars:
           <span class="font-normal">{{repoStars | displayStarsAndIssuesAppropriatly}}</span>
+          </div>
         </div>
-        <div class="flex-none shadow-sm bg-gray-100 font-semibold px-2 py-1 mr-2">
-          Issues:
+        <div class="flex-none flex items-center shadow-sm rounded-lg bg-gray-200 font-semibold px-2 py-1 mr-2">
+          <MySvg :path="issueIcon" />
+          <div class="">
+            Issues:
           <span class="font-normal">{{repoIssues | displayStarsAndIssuesAppropriatly}}</span>
+          </div>
         </div>
         <div class="text-gray-500">
           <span>Submitted </span>
@@ -25,6 +31,10 @@
 </template>
 
 <script>
+// importing svg component that will accept a path as a prop
+import MySvg from '@/components/MySvg.vue'
+// importing some icons/svg paths
+import {mdiStar, mdiAlertCircleOutline} from '@mdi/js'
 //importing formatters
 import {
   timePassedSincePushed,
@@ -44,6 +54,15 @@ export default {
     repo: {
       type: Object,
       required: true
+    }
+  },
+  components: {
+    MySvg
+  },
+  data(){
+    return {
+      starIcon: mdiStar,
+      issueIcon: mdiAlertCircleOutline
     }
   },
   computed: {
