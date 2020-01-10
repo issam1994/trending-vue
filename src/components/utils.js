@@ -7,6 +7,46 @@ export const hasScrolledToTheEndOfList = function () {
     return reachedBottom || pageHeight < visible
 }
 //
+export const timePassedSincePushed = function (pushed_at) {
+    const TODAY = new Date()
+    return TODAY - new Date(pushed_at)
+}
+//
+export const hasADayOrMorePassedSincePushed = function (pushed_at) {
+    return timePassedSincePushedInHours(pushed_at) >= 24
+}
+//
+export const hasAnHourOrMorePassedSincePushed = function (pushed_at) {
+    return timePassedSincePushedInMinutes(pushed_at) >= 60
+}
+//
+export const timePassedSincePushedInDays = function (pushed_at) {
+    return convertTimePassedToDays(timePassedSincePushed(pushed_at))
+}
+//
+export const timePassedSincePushedInHours = function (pushed_at) {
+    return convertTimePassedToHours(timePassedSincePushed(pushed_at))
+}
+//
+export const timePassedSincePushedInMinutes = function (pushed_at) {
+    return convertTimePassedToMinutes(timePassedSincePushed(pushed_at))
+}
+//
+export const convertTimePassedToMinutes = function (TimePassed) {
+    const A_MILLESECOND_IN_MINUTES = 1000 * 60
+    return parseInt(TimePassed / A_MILLESECOND_IN_MINUTES)
+}
+//
+export const convertTimePassedToHours = function (TimePassed) {
+    const A_MILLESECOND_IN_HOURS = 1000 * 60 * 60
+    return parseInt(TimePassed / A_MILLESECOND_IN_HOURS)
+}
+//
+export const convertTimePassedToDays = function (TimePassed) {
+    const A_MILLESECOND_IN_DAYS = 1000 * 60 * 60 * 24
+    return parseInt(TimePassed / A_MILLESECOND_IN_DAYS)
+}
+//
 export const thirtyDaysBeforeToday = function () {
     let thirtyDays = (30* 24 * 60 * 60 * 1000);
     let todayMinus30Days = new Date(Date.now() - thirtyDays);

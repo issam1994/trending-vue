@@ -8,15 +8,15 @@
       <div class="flex items-center">
         <div class="flex-none shadow-sm bg-gray-100 font-semibold px-2 py-1 mr-2">
           Stars:
-          <span class="font-normal">{{repoStars}}</span>
+          <span class="font-normal">{{repoStars | displayStarsAndIssuesAppropriatly}}</span>
         </div>
         <div class="flex-none shadow-sm bg-gray-100 font-semibold px-2 py-1 mr-2">
           Issues:
-          <span class="font-normal">{{repoIssues}}</span>
+          <span class="font-normal">{{repoIssues | displayStarsAndIssuesAppropriatly}}</span>
         </div>
         <div class="text-gray-500">
           <span>Submitted </span>
-          <span>{{timeInterval}} </span>
+          <span>{{timeInterval | convertAndDisplayTimePassedWithAppropriateUnit}} </span>
           <span>by {{repoOwner}}</span>
         </div>
       </div>
@@ -25,6 +25,18 @@
 </template>
 
 <script>
+//importing formatters
+import {
+  timePassedSincePushed,
+  hasADayOrMorePassedSincePushed,
+  hasAnHourOrMorePassedSincePushed,
+  timePassedSincePushedInDays,
+  timePassedSincePushedInHours,
+  timePassedSincePushedInMinutes,
+  convertTimePassedToMinutes,
+  convertTimePassedToHours,
+  convertTimePassedToDays
+} from '@/components/utils.js'
 
 export default {
   props: {
@@ -56,6 +68,24 @@ export default {
       return this.repo.owner.login
     }
   },
+  filters: {
+    //
+    convertAndDisplayTimePassedWithAppropriateUnit(pushed_at) {
+      if (hasADayOrMorePassedSincePushed(pushed_at))
+        return timePassedSincePushedInDays(pushed_at) + ' day(s) ago'
+      else if (hasAnHourOrMorePassedSincePushed(pushed_at))
+        return timePassedSincePushedInHours(pushed_at) + ' hour(s) ago'
+      else return timePassedSincePushedInMinutes(pushed_at) + ' minute(s) ago'
+    },
+    //
+    displayStarsAndIssuesAppropriatly(starsOrIsssues) {
+      if (starsOrIsssues > 1000) {
+        return (starsOrIsssues / 1000).toFixed(1) + 'k'
+      } else {
+        return starsOrIsssues
+      }
+    }
+  }
 }
 </script>
 
