@@ -1,18 +1,18 @@
 <template>
-<div class="bg-gray-200 py-8">
+<div class="bg-gray-200 py-6">
   <div class="container mx-auto">
-    <RepoRow />
+    <RepoList />
   </div>
 </div>
 </template>
 
 <script>
-import RepoRow from '@/components/RepoRow.vue'
+import RepoList from '@/components/RepoList.vue'
 
 export default {
   name: 'app',
   components: {
-    RepoRow
+    RepoList
   }
 }
 </script>
