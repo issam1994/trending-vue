@@ -21,29 +21,29 @@ export const thirtyDaysBeforeToday = function () {
     return dateString
 }
 //
-export const timePassedSincePushed = function (created_at) {
+export const timePassedSinceCreated = function (created_at) {
     const TODAY = new Date()
     return TODAY - new Date(created_at)
 }
 //
-export const hasADayOrMorePassedSincePushed = function (created_at) {
-    return timePassedSincePushedInHours(created_at) >= 24
+export const hasADayOrMorePassedSinceCreated = function (created_at) {
+    return timePassedSinceCreatedInHours(created_at) >= 24
 }
 //
-export const hasAnHourOrMorePassedSincePushed = function (created_at) {
-    return timePassedSincePushedInMinutes(created_at) >= 60
+export const hasAnHourOrMorePassedSinceCreated = function (created_at) {
+    return timePassedSinceCreatedInMinutes(created_at) >= 60
 }
 //
-export const timePassedSincePushedInDays = function (created_at) {
-    return convertTimePassedToDays(timePassedSincePushed(created_at))
+export const timePassedSinceCreatedInDays = function (created_at) {
+    return convertTimePassedToDays(timePassedSinceCreated(created_at))
 }
 //
-export const timePassedSincePushedInHours = function (created_at) {
-    return convertTimePassedToHours(timePassedSincePushed(created_at))
+export const timePassedSinceCreatedInHours = function (created_at) {
+    return convertTimePassedToHours(timePassedSinceCreated(created_at))
 }
 //
-export const timePassedSincePushedInMinutes = function (created_at) {
-    return convertTimePassedToMinutes(timePassedSincePushed(created_at))
+export const timePassedSinceCreatedInMinutes = function (created_at) {
+    return convertTimePassedToMinutes(timePassedSinceCreated(created_at))
 }
 //
 export const convertTimePassedToMinutes = function (TimePassed) {

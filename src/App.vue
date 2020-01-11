@@ -1,5 +1,5 @@
 <template>
-<div class="bg-gray-200 text-gray-800 py-6">
+<div class="min-h-screen bg-gray-200 text-gray-800 py-6">
   <div class="container mx-auto">
     <RepoList />
   </div>

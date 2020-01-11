@@ -1,19 +1,19 @@
 <template>
   <!-- repo row -->
   <div class="flex items-center px-2 py-4 rounded-lg shadow bg-white mb-4">
-    <img class="w-32 h-32 mx-4 rounded-full object-cover border" :src="ownerAvatar" alt="avatar" />
+    <img class="w-32 h-32 flex-none mx-4 rounded-full object-cover border" :src="ownerAvatar" alt="avatar" />
     <div class="px-2">
       <div class="text-3xl font-bold tracking-wide">{{repoName}}</div>
       <div class="font-medium pb-2">{{repoDescription}}</div>
       <div class="flex items-center">
-        <div class="flex-none flex items-center shadow-sm rounded-lg bg-gray-200 font-semibold px-2 py-1 mr-2">
+        <div class="flex-none flex items-center shadow-sm rounded-lg bg-gray-200  text-gray-700 font-semibold px-2 py-1 mr-2">
           <MySvg :path="starIcon" />
           <div class="">
           Stars:
           <span class="font-normal">{{repoStars | displayStarsAndIssuesAppropriately}}</span>
           </div>
         </div>
-        <div class="flex-none flex items-center shadow-sm rounded-lg bg-gray-200 font-semibold px-2 py-1 mr-2">
+        <div class="flex-none flex items-center shadow-sm rounded-lg bg-gray-200  text-gray-700 font-semibold px-2 py-1 mr-2">
           <MySvg :path="issueIcon" />
           <div class="">
             Issues:
@@ -35,17 +35,13 @@
 import MySvg from '@/components/MySvg.vue'
 // importing some icons/svg paths
 import {mdiStar, mdiAlertCircleOutline} from '@mdi/js'
-//importing formatters
+//importing formatters.. & some helpers
 import {
-  timePassedSincePushed,
-  hasADayOrMorePassedSincePushed,
-  hasAnHourOrMorePassedSincePushed,
-  timePassedSincePushedInDays,
-  timePassedSincePushedInHours,
-  timePassedSincePushedInMinutes,
-  convertTimePassedToMinutes,
-  convertTimePassedToHours,
-  convertTimePassedToDays
+  hasADayOrMorePassedSinceCreated,
+  hasAnHourOrMorePassedSinceCreated,
+  timePassedSinceCreatedInDays,
+  timePassedSinceCreatedInHours,
+  timePassedSinceCreatedInMinutes,
 } from "@/components/utils.js";
 
 export default {
@@ -91,11 +87,11 @@ export default {
   filters: {
     //
     convertAndDisplayTimePassedWithAppropriateUnit(created_at) {
-      if (hasADayOrMorePassedSincePushed(created_at))
-        return timePassedSincePushedInDays(created_at) + " day(s) ago";
-      else if (hasAnHourOrMorePassedSincePushed(created_at))
-        return timePassedSincePushedInHours(created_at) + " hour(s) ago";
-      else return timePassedSincePushedInMinutes(created_at) + " minute(s) ago";
+      if (hasADayOrMorePassedSinceCreated(created_at))
+        return timePassedSinceCreatedInDays(created_at) + " day(s) ago";
+      else if (hasAnHourOrMorePassedSinceCreated(created_at))
+        return timePassedSinceCreatedInHours(created_at) + " hour(s) ago";
+      else return timePassedSinceCreatedInMinutes(created_at) + " minute(s) ago";
     },
     //
     displayStarsAndIssuesAppropriately(starsOrIsssues) {

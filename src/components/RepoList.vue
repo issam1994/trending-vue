@@ -28,6 +28,7 @@ export default {
   destroyed() {
     this.stopListeningToScrolling()
   },
+  // state
   data() {
     return {
       repos: [],

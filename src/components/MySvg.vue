@@ -1,5 +1,5 @@
 <template>
-    <svg class=" fill-current w-5 h-5 mr-2" viewBox="0 0 25 25">
+    <svg class="fill-current w-5 h-5 mr-2" viewBox="0 0 25 25">
         <path :d="path" />
     </svg>
 </template>
