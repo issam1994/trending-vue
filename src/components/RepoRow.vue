@@ -3,18 +3,21 @@
   <div class="flex items-center px-2 py-4 rounded-lg shadow bg-white mb-4">
     <img class="w-32 h-32 flex-none mx-4 rounded-full object-cover border" :src="ownerAvatar" alt="avatar" />
     <div class="px-2">
-      <div class="text-3xl font-bold tracking-wide">{{repoName}}</div>
+      <div class="text-3xl font-bold tracking-wide flex items-center">
+        {{repoName}}
+        <a :href="repoLink"><my-svg class="mx-1" :path="linkIcon"></my-svg></a>
+        </div>
       <div class="font-medium pb-2">{{repoDescription}}</div>
       <div class="flex items-center">
         <div class="flex-none flex items-center shadow-sm rounded-lg bg-gray-200  text-gray-700 font-semibold px-2 py-1 mr-2">
-          <MySvg :path="starIcon" />
+          <my-svg :path="starIcon"></my-svg>
           <div class="">
           Stars:
           <span class="font-normal">{{repoStars | displayStarsAndIssuesAppropriately}}</span>
           </div>
         </div>
         <div class="flex-none flex items-center shadow-sm rounded-lg bg-gray-200  text-gray-700 font-semibold px-2 py-1 mr-2">
-          <MySvg :path="issueIcon" />
+          <my-svg :path="issueIcon"></my-svg>
           <div class="">
             Issues:
           <span class="font-normal">{{repoIssues | displayStarsAndIssuesAppropriately}}</span>
@@ -34,7 +37,7 @@
 // importing svg component that will accept a path as a prop
 import MySvg from '@/components/MySvg.vue'
 // importing some icons/svg paths
-import {mdiStar, mdiAlertCircleOutline} from '@mdi/js'
+import {mdiStar, mdiAlertCircleOutline, mdiLinkVariant} from '@mdi/js'
 //importing formatters.. & some helpers
 import {
   hasADayOrMorePassedSinceCreated,
@@ -58,7 +61,8 @@ export default {
   data(){
     return {
       starIcon: mdiStar,
-      issueIcon: mdiAlertCircleOutline
+      issueIcon: mdiAlertCircleOutline,
+      linkIcon: mdiLinkVariant
     }
   },
   computed: {
@@ -67,6 +71,9 @@ export default {
     },
     repoName() {
       return this.repo.name;
+    },
+    repoLink(){
+      return this.repo.url;
     },
     repoDescription() {
       return this.repo.description;

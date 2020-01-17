@@ -54,7 +54,7 @@ export default {
         let data = (await axios.get(apiUrl)).data;
         return this.extractReposFromFetchedData(data);
       } catch (e) {
-        //retry fetching data
+        //retry fetching data in case it failed
         return this.getDataFromApi();
       }
     },
