@@ -22,10 +22,11 @@ export const thirtyDaysBeforeToday = function () {
 }
 //
 export const timePassedSinceCreated = function (created_at) {
-    const TODAY = new Date()
-    return TODAY - new Date(created_at)
+    const TODAY = new Date();
+    const HowManyMillesecondsPassed = TODAY - new Date(created_at)
+    return HowManyMillesecondsPassed;
 }
-//
+// created_at is always in milleseconds
 export const hasADayOrMorePassedSinceCreated = function (created_at) {
     return timePassedSinceCreatedInHours(created_at) >= 24
 }
@@ -45,18 +46,18 @@ export const timePassedSinceCreatedInHours = function (created_at) {
 export const timePassedSinceCreatedInMinutes = function (created_at) {
     return convertTimePassedToMinutes(timePassedSinceCreated(created_at))
 }
-//
+// timePassed is in milleseconds
 export const convertTimePassedToMinutes = function (TimePassed) {
-    const A_MILLESECOND_IN_MINUTES = 1000 * 60
-    return parseInt(TimePassed / A_MILLESECOND_IN_MINUTES)
+    const A_MINUTE_IN_MILLESECONDS = 1000 * 60
+    return parseInt(TimePassed / A_MINUTE_IN_MILLESECONDS)
 }
 //
 export const convertTimePassedToHours = function (TimePassed) {
-    const A_MILLESECOND_IN_HOURS = 1000 * 60 * 60
-    return parseInt(TimePassed / A_MILLESECOND_IN_HOURS)
+    const AN_HOUR_IN_MILLESECONDS = 1000 * 60 * 60
+    return parseInt(TimePassed / AN_HOUR_IN_MILLESECONDS)
 }
 //
 export const convertTimePassedToDays = function (TimePassed) {
-    const A_MILLESECOND_IN_DAYS = 1000 * 60 * 60 * 24
-    return parseInt(TimePassed / A_MILLESECOND_IN_DAYS)
+    const A_DAY_IN_MILLESECONDS = 1000 * 60 * 60 * 24
+    return parseInt(TimePassed / A_DAY_IN_MILLESECONDS)
 }
