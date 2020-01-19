@@ -5,7 +5,7 @@
     <div class="px-2">
       <div class="text-3xl font-bold tracking-wide flex items-center">
         {{repoName}}
-        <a :href="repoLink"><my-svg class="mx-1" :path="linkIcon"></my-svg></a>
+        <a :href="repoLink" target="_blank"><my-svg class="mx-1" :path="linkIcon"></my-svg></a>
         </div>
       <div class="font-medium pb-2">{{repoDescription}}</div>
       <div class="flex items-center">
@@ -73,7 +73,7 @@ export default {
       return this.repo.name;
     },
     repoLink(){
-      return this.repo.url;
+      return this.repo.html_url;
     },
     repoDescription() {
       return this.repo.description;
