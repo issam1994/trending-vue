@@ -3,12 +3,12 @@
   <div class="flex flex-col sm:flex-row items-center px-2 py-4 rounded-lg shadow bg-white mb-4">
     <img class="w-32 h-32 flex-none mx-4 rounded-full object-cover border" :src="ownerAvatar" alt="avatar" />
     <div class="px-2">
-      <div class="text-3xl font-bold tracking-wide flex justify-center sm:justify-start items-center">
+      <div class="text-xl sm:text-2xl font-bold tracking-wide flex justify-center sm:justify-start items-center">
         {{repoName}}
         <a :href="repoLink" target="_blank"><my-svg class="mx-1" :path="linkIcon"></my-svg></a>
         </div>
-      <div class="font-medium pb-2 text-center sm:text-left">{{repoDescription}}</div>
-      <div class="flex flex-wrap sm:flex-no-wrap items-center justify-center sm:justify-start">
+      <div class="font-medium text-sm sm:text-base pb-2 text-center sm:text-left">{{repoDescription}}</div>
+      <div class=" text-sm sm:text-base flex flex-wrap sm:flex-no-wrap items-center justify-center sm:justify-start">
         <div class="mb-2 flex-none flex items-center shadow-sm rounded-lg bg-gray-200  text-gray-700 font-semibold px-2 py-1 mr-2">
           <my-svg :path="starIcon"></my-svg>
           <div class="">
@@ -23,7 +23,7 @@
           <span class="font-normal">{{repoIssues | displayStarsAndIssuesAppropriately}}</span>
           </div>
         </div>
-        <div class="text-gray-500">
+        <div class="text-gray-500 text-sm">
           <span>Submitted </span>
           <span>{{timeInterval | convertAndDisplayTimePassedWithAppropriateUnit}} </span>
           <span>by {{repoOwner}} </span>
