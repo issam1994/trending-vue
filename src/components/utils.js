@@ -21,7 +21,7 @@ export const thirtyDaysBeforeToday = function () {
     return dateString
 }
 //
-export const timePassedSinceCreated = function (created_at) {
+const timePassedSinceCreated = function (created_at) {
     const TODAY = new Date();
     const HowManyMillesecondsPassed = TODAY - new Date(created_at)
     return HowManyMillesecondsPassed;
@@ -47,17 +47,17 @@ export const timePassedSinceCreatedInMinutes = function (created_at) {
     return convertTimePassedToMinutes(timePassedSinceCreated(created_at))
 }
 // timePassed is in milleseconds
-export const convertTimePassedToMinutes = function (TimePassed) {
+const convertTimePassedToMinutes = function (TimePassed) {
     const A_MINUTE_IN_MILLESECONDS = 1000 * 60
     return parseInt(TimePassed / A_MINUTE_IN_MILLESECONDS)
 }
 //
-export const convertTimePassedToHours = function (TimePassed) {
+const convertTimePassedToHours = function (TimePassed) {
     const AN_HOUR_IN_MILLESECONDS = 1000 * 60 * 60
     return parseInt(TimePassed / AN_HOUR_IN_MILLESECONDS)
 }
 //
-export const convertTimePassedToDays = function (TimePassed) {
+const convertTimePassedToDays = function (TimePassed) {
     const A_DAY_IN_MILLESECONDS = 1000 * 60 * 60 * 24
     return parseInt(TimePassed / A_DAY_IN_MILLESECONDS)
 }

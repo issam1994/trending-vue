@@ -11,7 +11,7 @@ import {
   hasScrolledToTheEndOfList,
   thirtyDaysBeforeToday
 } from "@/components/utils.js";
-//importing the repo component
+//importing the components
 import RepoRow from "@/components/RepoRow";
 import MySpinner from "@/components/MySpinner";
 // importing axios
@@ -55,7 +55,7 @@ export default {
         return this.extractReposFromFetchedData(data);
       } catch (e) {
         //retry fetching data in case it failed
-        return this.getDataFromApi();
+        return setTimeout(this.getDataFromApi, 10000)
       }
     },
     // ..
